@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt">
+<head>
+	<meta charset="utf-8">
+
+	<title>Site fera</title>
+	<meta name="description" content="Sitezão fera">
+	<meta name="author" content="Fabio Paulo Vitor">
+
+	<link rel="stylesheet" href="style.css">
+	<script src="jquery.js"></script>
+	<script src="code.js"></script>
+</head>
+
+<body>
+
+<header>
+	<div id="cabe">
+		<div id="logo"><img src="logo.png"></img></div>
+		<h2>SIMULADOR DE MÁQUINAS DE ESTADO</h2>
+		<h4>Fabio Destro - Paulo Caneiro - Vitor Torres</h4>	
+	</div>
+</header>
+
+
+	<article>
+		<div id="conteudo">
+
+				 <form>
+					
+					 <div id="op">
+						<h5>Escolha o tipo de máquina:</h5>
+						<input type="radio" name="tipo" value="0" checked>Mealy<br>
+						<input type="radio" name="tipo" value="1">Moore<br>
+					</div>
+					<hr />
+					
+					 <div id="op2">
+						<h5>Número de estados:</h5>
+						<select>
+						  <option value="0">1 estado</option>
+						  <option value="1">2 estados</option>
+						  <option value="2">3 estados</option>
+						  <option value="3">4 estados</option>
+						  <option value="4">5 estados</option>
+						  <option value="5">6 estados</option>
+						  <option value="6">7 estados</option>
+						  <option value="7">8 estados</option>
+						</select>
+					</div>
+					<hr />
+					
+						
+					 <div id="op3">
+						<h5>Número de entradas:</h5>
+						 <input type="number" name="qtdEntrada" min="1" max="3">
+						</div>
+					<hr />
+					
+					 <div id="op4">
+						<h5>Número de saídas:</h5>
+						 <input type="number" name="qtdSaida" min="1" max="3">
+						</div>
+					<hr />
+					
+							 <div id="op5">
+						<h5>Dados da tabela verdade:</h5>
+					<textarea name="tabela verdade" rows="20" cols="80" placeholder="1 1 0 1 1 0 1"></textarea> 
+						</div>
+				
+				<br/>
+					<div id="op6">
+						<button class="btn" >Gerar simulação!</button>
+					</div>
+					
+					
+						
+				<br/>	 	 			
+				</form> 
+			
+			
+		</div>
+	</article>
+
+
+</body>
+</html>
