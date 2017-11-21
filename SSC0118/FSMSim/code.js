@@ -11,7 +11,7 @@
 		if(tipoEstado == 1) tp = "Moore";
 		qtdEstados++;
 		
-		alert("Tipo: " + tp + " com " + qtdEstados + " estados, com " + qtdEntradas +" entadas e com " + qtdSaidas + " saidas");
+		alert("Tipo: " + tp + " com " + qtdEstados + " estados, " + qtdEntradas +" entradas e " + qtdSaidas + " saidas");
 	});
 
 });
