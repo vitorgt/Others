@@ -12,44 +12,50 @@
 	<body>
 		<canvas width="980" height="980"></canvas>
 		<script type="text/javascript">
-		var hcan = $(window).height();
+		var bpos = [0, Math.PI/4, Math.PI/2, 3*Math.PI/4, Math.PI, 5*Math.PI/4, 6*Math.PI/4, 7*Math.PI/4];
+		var hcan = $(window).height()-4;
+		if(hcan < 450)
+			hcan = 450;
 		var h2can = hcan - 0.2*hcan;
 		var wcan = $(window).width();
+		if(wcan < (((Math.sin(bpos[2])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6])))-((Math.sin(bpos[6])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6])))+80))
+			wcan = (((Math.sin(bpos[2])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6])))-((Math.sin(bpos[6])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6])))+85);
 		var ctx = document.querySelector('canvas').getContext('2d');
+		ctx.canvas.width = wcan;
 		ctx.canvas.height = hcan;
 
-		var bpos = [0, Math.PI/4, Math.PI/2, 3*Math.PI/4, Math.PI, 5*Math.PI/4, 6*Math.PI/4, 7*Math.PI/4];
-		var qest = 8;
+		var qest = 3;
+		if(qest == 1){
+			alert("Operação Inválida");
+			window.stop();
+		}
 		var est = [0,0,0,0,0,0,0,0];
 
-		//alert(-(Math.cos(bpos[0])*h2can+Math.sin(bpos[2])*hcan)/(Math.cos(bpos[4])-Math.cos(bpos[0])));
 		if(qest == 3 | qest == 5 | qest == 8)
 			if(qest == 3 | qest == 8)
-				est[0] = randomCircle(ctx,'#a80000', ((Math.sin(bpos[0])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), -((Math.cos(bpos[0])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))));
+				est[0] = randomCircle(ctx,'#a80000', ((Math.sin(bpos[0])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[0])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
 			else
-				est[0] = randomCircle(ctx,'#999',
-	(Math.sin(bpos[0])*h2can-Math.cos(bpos[4])*wcan)/(Math.sin(bpos[2])-Math.sin(bpos[6])),
-	(Math.cos(bpos[0])*h2can+Math.sin(bpos[2])*hcan)/(Math.cos(bpos[4])-Math.cos(bpos[0])));
+				est[0] = randomCircle(ctx,'#999', ((Math.sin(bpos[0])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[0])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
 		if(qest == 4 | qest == 6 | qest == 7 | qest == 8)
-			est[1] = randomCircle(ctx,'#999', 772.8, 207.1);
+			est[1] = randomCircle(ctx,'#999', ((Math.sin(bpos[1])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[1])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
 		if(qest == 2 | qest == 5 | qest == 6 | qest == 7 | qest == 8)
-			est[2] = randomCircle(ctx,'#999', 890, 490);
+			est[2] = randomCircle(ctx,'#999', ((Math.sin(bpos[2])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[2])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
 		if(qest == 3 | qest == 4 | qest == 6 | qest == 7 | qest == 8)
-			est[3] = randomCircle(ctx,'#999', 772.8, 772.8);
+			est[3] = randomCircle(ctx,'#999', ((Math.sin(bpos[3])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[3])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
 		if(qest == 5 | qest == 7 | qest == 8)
-			est[4] = randomCircle(ctx,'#999', 490, 890);
+			est[4] = randomCircle(ctx,'#999', ((Math.sin(bpos[4])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[4])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
 		if(qest == 3 | qest == 4 | qest == 6 | qest == 7 | qest == 8)
-			est[5] = randomCircle(ctx,'#999', 207.1, 772.8);
+			est[5] = randomCircle(ctx,'#999', ((Math.sin(bpos[5])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[5])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
 		if(qest == 2 | qest == 5 | qest == 6 | qest == 7 | qest == 8)
 			if(qest == 2)
-				est[6] = randomCircle(ctx,'#a80000', 90, 490);
+				est[6] = randomCircle(ctx,'#a80000', ((Math.sin(bpos[6])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[6])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
 			else
-				est[6] = randomCircle(ctx,'#999', 90, 490);
+				est[6] = randomCircle(ctx,'#999', ((Math.sin(bpos[6])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[6])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
 		if(qest == 4 | qest == 5 | qest == 6 | qest == 7 | qest == 8)
 			if(qest == 4 | qest == 5 | qest == 6 | qest == 7)
-				est[7] = randomCircle(ctx,'#a80000', 207.1, 207.1);
+				est[7] = randomCircle(ctx,'#a80000', ((Math.sin(bpos[7])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[7])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
 			else
-				est[7] = randomCircle(ctx,'#999', 207.1, 207.1);
+				est[7] = randomCircle(ctx,'#999', ((Math.sin(bpos[7])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[7])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
 
 		ctx.lineWidth = 2;
 		ctx.fillStyle = ctx.strokeStyle = '#5ba4ba';
