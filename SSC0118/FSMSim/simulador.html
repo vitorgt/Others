@@ -7,20 +7,29 @@
 			body{background:#fff; margin:0em 0em; text-align:center;}
 			canvas{background:#fff; border:0px solid #666}
 		</style>
+		<script src="jquery.js"></script>
 	</head>
 	<body>
 		<canvas width="980" height="980"></canvas>
 		<script type="text/javascript">
+		var hcan = $(window).height();
+		var h2can = hcan - 0.2*hcan;
+		var wcan = $(window).width();
 		var ctx = document.querySelector('canvas').getContext('2d');
+		ctx.canvas.height = hcan;
 
+		var bpos = [0, Math.PI/4, Math.PI/2, 3*Math.PI/4, Math.PI, 5*Math.PI/4, 6*Math.PI/4, 7*Math.PI/4];
 		var qest = 8;
 		var est = [0,0,0,0,0,0,0,0];
 
+		//alert(-(Math.cos(bpos[0])*h2can+Math.sin(bpos[2])*hcan)/(Math.cos(bpos[4])-Math.cos(bpos[0])));
 		if(qest == 3 | qest == 5 | qest == 8)
 			if(qest == 3 | qest == 8)
-				est[0] = randomCircle(ctx,'#a80000', 490, 90);
+				est[0] = randomCircle(ctx,'#a80000', ((Math.sin(bpos[0])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), -((Math.cos(bpos[0])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))));
 			else
-				est[0] = randomCircle(ctx,'#999', 490, 90);
+				est[0] = randomCircle(ctx,'#999',
+	(Math.sin(bpos[0])*h2can-Math.cos(bpos[4])*wcan)/(Math.sin(bpos[2])-Math.sin(bpos[6])),
+	(Math.cos(bpos[0])*h2can+Math.sin(bpos[2])*hcan)/(Math.cos(bpos[4])-Math.cos(bpos[0])));
 		if(qest == 4 | qest == 6 | qest == 7 | qest == 8)
 			est[1] = randomCircle(ctx,'#999', 772.8, 207.1);
 		if(qest == 2 | qest == 5 | qest == 6 | qest == 7 | qest == 8)
