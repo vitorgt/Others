@@ -2,29 +2,32 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Simulacao fera</title>
-		<style type="text/css">
-			body{background:#fff; margin:0em 0em; text-align:center;}
-			canvas{background:#fff; border:0px solid #666}
-		</style>
-		<script src="jquery.js"></script>
+			<title>Simulacao fera</title>
+			<style type="text/css">
+				body{background:#fff; margin:0em 0em; text-align:center;}
+				canvas{background:#fff; border:0px solid #666}
+			</style>
+			<script src="jquery.js"></script>
 	</head>
 	<body>
 		<canvas width="980" height="980"></canvas>
 		<script type="text/javascript">
+
 		var bpos = [0, Math.PI/4, Math.PI/2, 3*Math.PI/4, Math.PI, 5*Math.PI/4, 6*Math.PI/4, 7*Math.PI/4];
 		var hcan = $(window).height()-4;
-		if(hcan < 450)
+		if(hcan < 450){
 			hcan = 450;
+		}
 		var h2can = hcan - 0.2*hcan;
 		var wcan = $(window).width();
-		if(wcan < (((Math.sin(bpos[2])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6])))-((Math.sin(bpos[6])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6])))+80))
+		if(wcan < (((Math.sin(bpos[2])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6])))-((Math.sin(bpos[6])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6])))+80)){
 			wcan = (((Math.sin(bpos[2])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6])))-((Math.sin(bpos[6])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6])))+85);
+		}
 		var ctx = document.querySelector('canvas').getContext('2d');
 		ctx.canvas.width = wcan;
 		ctx.canvas.height = hcan;
 
-		var qest = 3;
+		var qest = 2;
 		if(qest == 1){
 			alert("Operação Inválida");
 			window.stop();
@@ -79,26 +82,41 @@
 			arrow(ctx,est[5],est[3],10,1);
 		}
 		if(qest == 8){
-			arrow(ctx,est[5],est[0],10,1);
-			arrow(ctx,est[5],est[7],10,1);
-			arrow(ctx,est[5],est[2],10,1);
+			arrow(ctx,est[0],est[1],10,1);
+			arrow(ctx,est[0],est[2],10,1);
 			arrow(ctx,est[0],est[3],10,1);
-			arrow(ctx,est[3],est[5],10,1);
-			arrow(ctx,est[5],est[3],10,1);
-			arrow(ctx,est[1],est[0],10,1);
-			arrow(ctx,est[6],est[5],10,1);
-			arrow(ctx,est[2],est[1],10,1);
+			arrow(ctx,est[0],est[4],10,1);
+			arrow(ctx,est[0],est[5],10,1);
+			arrow(ctx,est[0],est[6],10,1);
+			arrow(ctx,est[0],est[7],10,1);
+			arrow(ctx,est[1],est[2],10,1);
+			arrow(ctx,est[1],est[3],10,1);
+			arrow(ctx,est[1],est[4],10,1);
+			arrow(ctx,est[1],est[5],10,1);
+			arrow(ctx,est[1],est[6],10,1);
+			arrow(ctx,est[1],est[7],10,1);
+			arrow(ctx,est[2],est[3],10,1);
+			arrow(ctx,est[2],est[4],10,1);
+			arrow(ctx,est[2],est[5],10,1);
+			arrow(ctx,est[2],est[6],10,1);
 			arrow(ctx,est[2],est[7],10,1);
-			arrow(ctx,est[7],est[6],10,1);
-			arrow(ctx,est[7],est[4],10,1);
-			arrow(ctx,est[4],est[1],10,1);
+			arrow(ctx,est[3],est[4],10,1);
+			arrow(ctx,est[3],est[5],10,1);
+			arrow(ctx,est[3],est[6],10,1);
+			arrow(ctx,est[3],est[7],10,1);
+			arrow(ctx,est[4],est[5],10,1);
+			arrow(ctx,est[4],est[6],10,1);
+			arrow(ctx,est[4],est[7],10,1);
+			arrow(ctx,est[5],est[6],10,1);
+			arrow(ctx,est[5],est[7],10,1);
+			arrow(ctx,est[6],est[7],10,1);
 		}
 		function arrow(ctx,p1,p2,size,aw){
 			ctx.save();
 
 			var points = edges(ctx,p1,p2);
 			if (points.length < 2) return 
-			p1 = points[0], p2=points[points.length-1];
+				p1 = points[0], p2=points[points.length-1];
 
 			// Rotate the context to point along the path
 			var dx = p2.x-p1.x, dy=p2.y-p1.y, len=Math.sqrt(dx*dx+dy*dy);
@@ -123,14 +141,14 @@
 				ctx.fill();
 			}
 			ctx.restore();
-			}
+		}
 
 		// Find all transparent/opaque transitions between two points
 		// Uses http://en.wikipedia.org/wiki/Bresenham's_line_algorithm
 		function edges(ctx,p1,p2,cutoff){
 			if (!cutoff) cutoff = 220; // alpha threshold
 			var dx = Math.abs(p2.x - p1.x), dy = Math.abs(p2.y - p1.y),
-					sx = p2.x > p1.x ? 1 : -1,sy = p2.y > p1.y ? 1 : -1;
+			    sx = p2.x > p1.x ? 1 : -1,sy = p2.y > p1.y ? 1 : -1;
 			var x0 = Math.min(p1.x,p2.x), y0=Math.min(p1.y,p2.y);
 			var pixels = ctx.getImageData(x0,y0,dx+1,dy+1).data;
 			var hits=[], over=null;
@@ -159,7 +177,7 @@
 			ctx.restore();
 			return {x:x,y:y};
 		}
-		
+
 		window.location.reload(true);
 		</script>
 	</body>
