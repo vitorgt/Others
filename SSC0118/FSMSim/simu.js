@@ -3,6 +3,7 @@ $(document).ready(function(){
 		var tipo = localStorage.getItem("tipoMaquina");
 		var qtdEst = localStorage.getItem("qtdEst");
 		var vetorTop = localStorage.getItem("vetTop");
+		tipo = 1;
 
 		var bpos = [0, Math.PI/4, Math.PI/2, 3*Math.PI/4, Math.PI, 5*Math.PI/4, 6*Math.PI/4, 7*Math.PI/4];
 		var hcan = $(window).height()-4-170;
@@ -17,40 +18,41 @@ $(document).ready(function(){
 		var ctx = document.querySelector('canvas').getContext('2d');
 		ctx.canvas.width = wcan;
 		ctx.canvas.height = hcan;
+		ctx.font = "20px Arial";
 
-		var qest = 3;
+		var qest = 8;
 		if(qest == 1){
 			alert("Operação Inválida");
 			window.stop();
 		}
 		var est = [0,0,0,0,0,0,0,0];
-		var proc = [1,1,2,0, 2,0,3,1, 3,1,2,1];
+		var proc = [1,1,2,1, 2,0,3,1, 3,1,2,1, 1,0,1,1, 3,0,3,1, 3,0,1,1];
 
 		if(qest == 3 | qest == 5 | qest == 8)
 			if(qest == 3 | qest == 8)
-				est[0] = randomCircle(ctx,'#a80000', ((Math.sin(bpos[0])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[0])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
+				est[0] = randomCircle(ctx,'#a80000', mX(bpos[0]), mY(bpos[0]),40);
 			else
-				est[0] = randomCircle(ctx,'#999', ((Math.sin(bpos[0])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[0])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
+				est[0] = randomCircle(ctx,'#999', ((Math.sin(bpos[0])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[0])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))),40);
 		if(qest == 4 | qest == 6 | qest == 7 | qest == 8)
-			est[1] = randomCircle(ctx,'#999', ((Math.sin(bpos[1])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[1])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
+			est[1] = randomCircle(ctx,'#999', ((Math.sin(bpos[1])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[1])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))),40);
 		if(qest == 2 | qest == 5 | qest == 6 | qest == 7 | qest == 8)
-			est[2] = randomCircle(ctx,'#999', ((Math.sin(bpos[2])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[2])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
+			est[2] = randomCircle(ctx,'#999', ((Math.sin(bpos[2])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[2])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))),40);
 		if(qest == 3 | qest == 4 | qest == 6 | qest == 7 | qest == 8)
-			est[3] = randomCircle(ctx,'#999', ((Math.sin(bpos[3])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[3])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
+			est[3] = randomCircle(ctx,'#999', ((Math.sin(bpos[3])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[3])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))),40);
 		if(qest == 5 | qest == 7 | qest == 8)
-			est[4] = randomCircle(ctx,'#999', ((Math.sin(bpos[4])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[4])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
+			est[4] = randomCircle(ctx,'#999', ((Math.sin(bpos[4])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[4])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))),40);
 		if(qest == 3 | qest == 4 | qest == 6 | qest == 7 | qest == 8)
-			est[5] = randomCircle(ctx,'#999', ((Math.sin(bpos[5])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[5])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
+			est[5] = randomCircle(ctx,'#999', ((Math.sin(bpos[5])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[5])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))),40);
 		if(qest == 2 | qest == 5 | qest == 6 | qest == 7 | qest == 8)
 			if(qest == 2)
-				est[6] = randomCircle(ctx,'#a80000', ((Math.sin(bpos[6])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[6])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
+				est[6] = randomCircle(ctx,'#a80000', ((Math.sin(bpos[6])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[6])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))),40);
 			else
-				est[6] = randomCircle(ctx,'#999', ((Math.sin(bpos[6])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[6])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
+				est[6] = randomCircle(ctx,'#999', ((Math.sin(bpos[6])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[6])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))),40);
 		if(qest == 4 | qest == 5 | qest == 6 | qest == 7 | qest == 8)
 			if(qest == 4 | qest == 5 | qest == 6 | qest == 7)
-				est[7] = randomCircle(ctx,'#a80000', ((Math.sin(bpos[7])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[7])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
+				est[7] = randomCircle(ctx,'#a80000', ((Math.sin(bpos[7])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[7])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))),40);
 			else
-				est[7] = randomCircle(ctx,'#999', ((Math.sin(bpos[7])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[7])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))));
+				est[7] = randomCircle(ctx,'#999', ((Math.sin(bpos[7])*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))), (hcan+(((Math.cos(bpos[7])*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0]))))),40);
 
 		ctx.lineWidth = 2;
 		ctx.fillStyle = ctx.strokeStyle = '#5ba4ba';
@@ -66,6 +68,7 @@ $(document).ready(function(){
 		}
 		if(qest == 3){
 			var i = 0;
+			var nproc = proc.slice(0);
 			for(i = 0; i < proc.length; i += 2){
 				if(proc[i] == 1)
 					proc[i] = 0;
@@ -75,7 +78,25 @@ $(document).ready(function(){
 					proc[i] = 5;
 			}
 			for(i = 0; i < proc.length; i += 4){
-				arrow(ctx,est[proc[i]],est[proc[i+2]],10,1);
+				ctx.fillStyle  = '#000';
+				ctx.fillText(""+nproc[i],est[proc[i]].x-5,est[proc[i]].y-5);
+				if(tipo){
+					ctx.fillText("___",est[proc[i]].x-15,est[proc[i]].y-1);
+					ctx.fillText(""+nproc[i+3],est[proc[i]].x-5,est[proc[i]].y+22);
+				}
+				ctx.fillStyle  = '#5ba4ba';
+			}
+			for(i = 0; i < proc.length; i += 4){
+				if(proc[i] == proc[i+2]){
+					//alert(proc[i]+" "+proc[i+2]);
+					var a = randomCircle(ctx,'#fff', est[proc[i]].x-30, est[proc[i]].y-60,1);
+					var b = randomCircle(ctx,'#fff', est[proc[i]].x+30, est[proc[i]].y-60,1);
+					arrow(ctx,a,est[proc[i]],10,0);
+					arrow(ctx,a,b,10,0);
+					arrow(ctx,b,est[proc[i]],10,1);
+				}
+				else
+					arrow(ctx,est[proc[i]],est[proc[i+2]],10,1);
 			}
 		}
 		if(qest == 8){
@@ -162,17 +183,24 @@ $(document).ready(function(){
 			return hits;
 		}
 
-		function randomCircle(ctx,color, x1, y1){
+		function randomCircle(ctx,color, x1, y1, r){
 			var x = Math.round(x1), y = Math.round(y1);
 			ctx.save();
 			ctx.beginPath();
-			ctx.arc(x, y, 40, 0, Math.PI * 2, false);
+			ctx.arc(x, y, r, 0, Math.PI * 2, false);
 			ctx.fillStyle = color;
 			ctx.fill();
 			ctx.lineWidth = 2;
 			ctx.stroke();
 			ctx.restore();
 			return {x:x,y:y};
+		}
+
+		function mY(k){
+			return (hcan+(((Math.cos(k)*h2can)+(Math.sin(bpos[2])*hcan))/((Math.cos(bpos[4]))-(Math.cos(bpos[0])))));
+		}
+		function mX(k){
+			return (((Math.sin(k)*h2can)-(Math.cos(bpos[4])*wcan))/((Math.sin(bpos[2]))-(Math.sin(bpos[6]))));
 		}
 
 		window.location.reload(true);
