@@ -63,6 +63,31 @@ hr {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+#entrada{
+	margin-top:10px;
+	width: 700px;
+	text-align: center;
+}
 
+#entrada p{
+	color: #000;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
+.btnE{
+
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    color: #000;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 
 
