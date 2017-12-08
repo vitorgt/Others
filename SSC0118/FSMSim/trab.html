@@ -18,7 +18,7 @@
 	<div id="cabe">
 		<div id="logo"><img src="logo.png"></img></div>
 		<h2>SIMULADOR DE MÁQUINAS DE ESTADO</h2>
-		<h4>Fabio Destro - Paulo Caneiro - Vitor Torres</h4>	
+		<h4>Eduardo Baratela - Fabio Destro - Paulo Caneiro - Vitor Torres</h4>	
 	</div>
 </header>
 
@@ -38,7 +38,6 @@
 					 <div id="op2">
 						<h5>Número de estados:</h5>
 						<select>
-						  <option value="0">1 estado</option>
 						  <option value="1">2 estados</option>
 						  <option value="2">3 estados</option>
 						  <option value="3">4 estados</option>
@@ -50,22 +49,10 @@
 					</div>
 					<hr />
 					
-						
-					 <div id="op3">
-						<h5>Número de entradas:</h5>
-						 <input type="number" name="qtdEntrada" min="1" max="3">
-						</div>
-					<hr />
-					
-					 <div id="op4">
-						<h5>Número de saídas:</h5>
-						 <input type="number" name="qtdSaida" min="1" max="3">
-						</div>
-					<hr />
 					
 							 <div id="op5">
 						<h5>Dados da tabela verdade:</h5>
-					<textarea name="tabelaVerdade" rows="20" cols="80" placeholder="1 1 0 1 1 0 1"></textarea> 
+					<textarea name="tabelaVerdade" rows="20" cols="80" placeholder="Estado Atual (1 até N) | Entrada | Próximo Estado (1 até N) | Saída"></textarea> 
 						</div>
 				
 				<br/>
@@ -73,15 +60,16 @@
 						<button class="btn" >Gerar simulação!</button>
 					</div>
 					
-					
-						
 				<br/>	 	 			
 				</form> 
+			
+				<p style="font-size:11px">Obeservação: o simulador funciona com uma entrada e uma saida, ambos com 1 bit (0 ou 1) como representação.</p>
 			
 			<p id="demo"></p>
 			
 		</div>
 	</article>
+	<br/><br />
 
 
 </body>
