@@ -18,7 +18,7 @@ $(document).ready(function(){
 		ctx.canvas.width = wcan;
 		ctx.canvas.height = hcan;
 
-		var qest = 8;
+		var qest = 3;
 		if(qest == 1){
 			alert("Operação Inválida");
 			window.stop();
@@ -77,12 +77,6 @@ $(document).ready(function(){
 			for(i = 0; i < proc.length; i += 4){
 				arrow(ctx,est[proc[i]],est[proc[i+2]],10,1);
 			}
-			/*
-			   arrow(ctx,est[5],est[0],10,1);
-			   arrow(ctx,est[0],est[3],10,1);
-			   arrow(ctx,est[3],est[5],10,1);
-			   arrow(ctx,est[5],est[3],10,1);
-			 */
 		}
 		if(qest == 8){
 			arrow(ctx,est[0],est[1],10,1);
@@ -181,6 +175,6 @@ $(document).ready(function(){
 			return {x:x,y:y};
 		}
 
-	//	window.location.reload(true);
+		window.location.reload(true);
 
 });
