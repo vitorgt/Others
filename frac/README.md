@@ -1,1 +1,1 @@
-# [Try it](https://vitorgt.github.io/Others/frac/index.html)
+# [Try it](https://vitorgt.github.io/Others/frac/)
