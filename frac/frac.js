@@ -6,7 +6,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   background(0);
   noStroke();
-  frac(width / 2 - size / 2, 0, size, size, 0, 0);
+  frac(width / 2 - size / 2, height / 2 - size / 2, size, size, 0, 0);
 }
 
 function frac(x, y, w, h, i, f) {
@@ -31,7 +31,7 @@ function draw() {
 
 function mousePressed() {
   ite++;
-  frac(width / 2 - size / 2, 0, size, size, 0, 0);
+  frac(width / 2 - size / 2, height / 2 - size / 2, size, size, 0, 0);
 }
 
 function keyTyped() {
